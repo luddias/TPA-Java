@@ -10,9 +10,34 @@ public class ArvoreBinaria<T> {
     public ArvoreBinaria(Node<T> raiz){
         this.raiz=raiz;
     }
+// ----------------------------------------
+    public void setNovoNo(Node<T> novoNo){
+        setNovoNo(this.raiz, novoNo);
+    }
+    private void setNovoNo(Node<T> r, Node<T> novoNo){
 
-    public setNovoNo(<>){
+    }
+// -----------------------------------------
+    public void caminhaEmOrdem(){
+        caminhaEmOrdem(this.raiz);
+    }
 
+    private void caminhaEmOrdem(Node<T> r){
+
+    }
+// ----------------------------------------------
+
+    public int quantElem(){
+        return quantElem(this.raiz);
+    }
+
+    private int quantElem(Node<T> r){
+        if(r==null)
+            return 0;
+        else{
+            return quantElem(r.getFilho_esq())+quantElem(r.getFilho_dir())+1;
+        }
+        
     }
     
 }
