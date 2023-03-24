@@ -7,4 +7,7 @@ public class ComparadorPorNome implements Comparator<Aluno> {
         return a.getNome().compareTo(b.getNome());
     }
 
+    public String getComparador(Aluno no){
+        return no.getNome();
+    }
 }

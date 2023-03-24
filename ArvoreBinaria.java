@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Comparator;
 
 
@@ -9,9 +10,11 @@ import java.util.Comparator;
 public class ArvoreBinaria<T> {
     protected Node<T> raiz;
     protected Comparator<T> comparador;
+    protected ArrayList<T> lista;
 
     public ArvoreBinaria(Comparator<T> comp){
         comparador = comp;
+        this.lista = new ArrayList<T>();
     }
 // ----------------------------------------
     public void setNovoNo(T novo){
@@ -40,21 +43,24 @@ public class ArvoreBinaria<T> {
 
     }
 // -----------------------------------------
-    public void caminhaEmOrdem(){
+    private void caminhaEmOrdem(){
         if(this.raiz!=null){
-            caminhaEmOrdem(this.raiz);
-            System.out.println(this.raiz.getValor());
+            caminhaEmOrdemRec(this.raiz);
+            this.lista.add(this.raiz.getValor());
            
         }
     }
 
-    private void caminhaEmOrdem(Node<T> r){
-        if(r.getFilho_esq()!=null){caminhaEmOrdem(r.getFilho_esq());
-            System.out.println(r.getFilho_esq().getValor());    
+    private void caminhaEmOrdemRec(Node<T> r){
+        if(r.getFilho_esq()!=null){
+            caminhaEmOrdemRec(r.getFilho_esq());
+            this.lista.add(r.getFilho_esq().getValor()); 
         }
             
-        if(r.getFilho_dir()!= null){caminhaEmOrdem(r.getFilho_dir());
-            System.out.println(r.getFilho_dir().getValor());}
+        if(r.getFilho_dir()!= null){
+            caminhaEmOrdemRec(r.getFilho_dir());
+            this.lista.add(r.getFilho_dir().getValor());
+        }
         
         
     }
@@ -77,4 +83,15 @@ public class ArvoreBinaria<T> {
         return raiz;
     }
 
+
+
+// -------------------------------------------------------------
+
+public ArrayList<T> getElementsList(){
+    caminhaEmOrdem();
+    return lista;
+    }
 }
+
+
+

@@ -23,8 +23,17 @@ public class App {
         System.out.println(arvMat.quantElem());
         System.out.println(arvNome.quantElem());
         
-        arvNome.caminhaEmOrdem();
-        arvMat.caminhaEmOrdem();
+        ArrayList<Aluno> listaArvNome = arvNome.getElementsList();
+
+        for(int i=0; i<listaArvNome.size(); i++){
+            System.out.println((listaArvNome.get(i)).getNome());
+        }
+
+        ArrayList<Aluno> listaArvMat = arvMat.getElementsList();
+        
+        for(int i=0; i<listaArvMat.size(); i++){
+            System.out.println((listaArvMat.get(i)).getMatricula());
+        }
 
     }
 }

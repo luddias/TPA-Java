@@ -7,4 +7,8 @@ public class ComparadorPorMatricula implements Comparator<Aluno> {
         return Integer.compare(a.getMatricula(), b.getMatricula());
     }
 
+    public int getComparador(Aluno no){
+        return no.getMatricula();
+    }
+
 }
