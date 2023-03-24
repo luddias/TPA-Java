@@ -23,6 +23,10 @@ public class Node<T>{
         return filho_dir;
     }
 
+    public T getValor() {
+        return valor;
+    }
+
 
 
 

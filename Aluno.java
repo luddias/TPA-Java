@@ -1,4 +1,6 @@
-public class Aluno {
+
+
+public class Aluno{
     private String nome;
     private int matricula;
     private int nota;
@@ -7,7 +9,16 @@ public class Aluno {
         this.matricula=matricula;
         this.nota=nota;
     }
-    public int compareTo(Aluno a){
-        return Integer.compare(this.matricula, a.matricula);
+    public int getMatricula() {
+        return matricula;
     }
-}
+    public int getNota() {
+        return nota;
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    }
+
+
