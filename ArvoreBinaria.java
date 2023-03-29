@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class ArvoreBinaria<T> {
     protected Node<T> raiz;
     protected Comparator<T> comparador;
-    protected ArrayList<T> lista;
+
 
     public ArvoreBinaria(Comparator<T> comp){
         comparador = comp;
@@ -42,6 +42,41 @@ public class ArvoreBinaria<T> {
 
     }
 // -----------------------------------------
+
+
+public int getAltura(){
+    if(this.raiz!=null){
+        return getAltura(this.raiz);
+    }
+    else{
+        return 0;
+    }
+
+}
+
+private int getAltura(Node<T> r){
+
+    int h_dir = 0;
+    int h_esq = 0;
+
+    if(r.getFilho_esq()!=null){
+        h_esq=getAltura(r.getFilho_esq());
+    }
+        
+    if(r.getFilho_dir()!= null){
+        h_dir = getAltura(r.getFilho_dir());
+    }
+
+    if(h_esq > h_dir){
+        return h_esq +1;
+    }
+    else{
+        return h_dir+1;
+    }
+    
+    
+}
+// ----------------------------------------------
     public ArrayList<T> caminhaEmOrdem(){
         ArrayList<T> lista = new ArrayList<T>();
         if(this.raiz!=null){
@@ -70,17 +105,17 @@ public class ArvoreBinaria<T> {
 // ----------------------------------------------
 
 public ArrayList<T> caminhaEmNivel(){
-    lista = new ArrayList<T>();
+    ArrayList<T> lista = new ArrayList<T>();
     ArrayList<Node<T>> fila = new ArrayList<Node<T>>();
     if(this.raiz !=null){
         fila.add(this.raiz);
-        caminhaEmNivelRec(fila);
+        lista = caminhaEmNivelRec(fila, lista);
     }
 
     return lista;
 }
 
-private void caminhaEmNivelRec(ArrayList<Node<T>> fila){
+private ArrayList<T>  caminhaEmNivelRec(ArrayList<Node<T>> fila, ArrayList<T> lista){
     Node<T> r = fila.get(0);
     lista.add(r.getValor());
     if(r.getFilho_esq()!=null){
@@ -92,9 +127,10 @@ private void caminhaEmNivelRec(ArrayList<Node<T>> fila){
 
     fila.remove(0);
     if(!fila.isEmpty()){
-        caminhaEmNivelRec(fila);
+        lista = caminhaEmNivelRec(fila, lista);
     }
     
+    return lista;
 }
 
 // ----------------------------------------------

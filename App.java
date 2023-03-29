@@ -42,5 +42,6 @@ public class App {
             System.out.println((listaMatEmNivel.get(i)).getMatricula());
         }
 
+        System.out.println(arvMat.getAltura());
     }
 }
